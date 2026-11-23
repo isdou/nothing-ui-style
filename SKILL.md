@@ -1,14 +1,14 @@
 ---
-name: glyph-ui-style
+name: nothing-ui-style
 description: >
-  使用源自 Glyph / Nothing OS 的「极简黑白点阵 + 唯一红点」工业美学设计语言（Glyph UI Style）创建 Web、Dashboard、桌面应用或 SwiftUI 界面。当用户需要：
-  (1) 使用 Nothing OS 风格、Glyph 风格、点阵 LED 风格、极简黑白红工业风创建 UI 页面或组件；
+  使用源自 Nothing OS / Glyph 的「极简黑白点阵 + 唯一红点」工业美学设计语言（Nothing UI Style）创建 Web、Dashboard、桌面应用或 SwiftUI 界面。当用户需要：
+  (1) 使用 Nothing OS 风格、Nothing UI 风格、Glyph 风格、点阵 LED 风格、极简黑白红工业风创建 UI 页面或组件；
   (2) 构建高对比度深色/浅色 Bento 仪表盘、硬件控制台、音乐播放器、系统监控面板、极客工具或 AI 产品界面；
   (3) 复用 glyph-rice 与 nothing-design-skill 的融合视觉语言（Doto 点阵数字 + Space Grotesk + Space Mono 大写标签 + 7 级灰度阶梯 + #D71921 唯一红点 + 三层信息层级 + 环形点阵进度/分段灯带/展开胶囊开关 + SwiftUI/Tailwind/CSS 多平台映射）；
-  (4) 提问"glyph 风格"、"Nothing OS 风格"、"nothing design"、"点阵风 UI"、"黑白红极客风"时，务必使用此 skill。
+  (4) 提问"Nothing OS 风格"、"nothing ui"、"nothing design"、"glyph 风格"、"点阵风 UI"、"黑白红极客风"时，务必使用此 skill。
 ---
 
-# Glyph UI Style — Nothing OS 工业点阵设计系统指南
+# Nothing UI Style — Nothing OS / Glyph 工业点阵设计系统指南
 
 本 Skill 融合提炼自两个开源项目：
 - [**Nebelung-cloud/glyph-rice**](https://github.com/Nebelung-cloud/glyph-rice)：核心 7 级黑白灰阶、LED 点阵/灯带/展开胶囊开关等实装硬件原语、Glide 无过冲动效与本地开源字体资产。

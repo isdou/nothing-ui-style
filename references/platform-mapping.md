@@ -1,6 +1,6 @@
-# Glyph UI Style — 多平台映射指南 (Platform Mapping)
+# Nothing UI Style — 多平台映射指南 (Platform Mapping)
 
-> 本映射指南参考并吸收自 [**dominikmartn/nothing-design-skill**](https://github.com/dominikmartn/nothing-design-skill)（MIT License），并统一对齐 `glyph-ui-style` 的 7 级灰阶与动效规范。
+> 本映射指南参考并吸收自 [**dominikmartn/nothing-design-skill**](https://github.com/dominikmartn/nothing-design-skill)（MIT License），并统一对齐 `nothing-ui-style` 的 7 级灰阶与动效规范。
 
 ---
 
