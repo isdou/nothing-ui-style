@@ -10,7 +10,11 @@
 ![Style](https://img.shields.io/badge/Style-Nothing%20OS%20%2F%20Glyph-000000?style=flat-square)
 ![Accent](https://img.shields.io/badge/One%20Live%20Red-%23D71921-D71921?style=flat-square)
 ![Theme](https://img.shields.io/badge/Theme-Dark%20%26%20Light-1A1A1A?style=flat-square)
-![Demo](https://img.shields.io/badge/Demo-Zero--Dependency%20HTML-F2F2F2?style=flat-square&logoColor=000000)
+![Demo](https://img.shields.io/badge/Live%20Demo-Open%20Preview-D71921?style=flat-square)
+
+<br />
+
+**[▶ 在线体验交互式组件 Demo (Live Preview)](https://isdou.github.io/glyph-ui-style/demo.html)**
 
 <br />
 
@@ -36,6 +40,8 @@
 ---
 
 ## 🎮 Interactive Demo（交互式组件演示）
+
+> **在线预览**：https://isdou.github.io/glyph-ui-style/demo.html
 
 本仓库内置了一个 **零依赖、可离线运行** 的完整交互演示页 [`demo.html`](./demo.html)，直接加载仓库内嵌的 `Doto`、`Space Grotesk`、`Space Mono` 开源字体，集中展示了 6 大标志性 Glyph 组件：
 
