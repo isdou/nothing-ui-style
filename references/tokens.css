@@ -1,29 +1,10 @@
 /* ==========================================================================
    Glyph UI Style — Design Tokens & Signature Primitives
-   Extracted from glyph-rice (Nothing OS inspired design language)
+   Synthesized from:
+   - Nebelung-cloud/glyph-rice (7-step monochrome scale, hardware primitives, Glide motion)
+   - dominikmartn/nothing-design-skill (MIT — status tokens, 8px spacing scale, state patterns)
    Core creed: Black, white dots, one red.
    ========================================================================== */
-
-/* Optional local font-face declarations (when bundling assets/fonts/)
-@font-face {
-  font-family: "Doto";
-  src: url("../assets/fonts/Doto[ROND,wght].ttf") format("truetype");
-  font-weight: 100 900;
-  font-display: swap;
-}
-@font-face {
-  font-family: "Space Grotesk";
-  src: url("../assets/fonts/SpaceGrotesk-Regular.otf") format("opentype");
-  font-weight: 400;
-  font-display: swap;
-}
-@font-face {
-  font-family: "Space Mono";
-  src: url("../assets/fonts/SpaceMono-Regular.ttf") format("truetype");
-  font-weight: 400;
-  font-display: swap;
-}
-*/
 
 /* Google Fonts fallback for web prototypes:
    https://fonts.googleapis.com/css2?family=Doto:ROND,wght@100,900&family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap
@@ -31,7 +12,7 @@
 
 :root,
 [data-theme="dark"] {
-  /* 7-step monochrome scale */
+  /* 7-step monochrome scale (from glyph-rice) */
   --glyph-bg: #000000;
   --glyph-s1: #0E0E0E;
   --glyph-s2: #1A1A1A;
@@ -43,8 +24,14 @@
 
   /* One live red */
   --glyph-accent: #D71921;
+  --glyph-accent-subtle: rgba(215, 25, 33, 0.15);
   --glyph-red: #D71921;
   --glyph-on-accent: #FFFFFF;
+
+  /* Data status tokens (apply to data values only, never labels or row backgrounds) */
+  --glyph-success: #4A9E5C;
+  --glyph-warning: #D4A843;
+  --glyph-interactive: #5B9BF6;
 
   /* Overlays & subtle elevation */
   --glyph-glow: rgba(255, 255, 255, 0.6);
@@ -56,10 +43,23 @@
   --font-ui: "Space Grotesk", -apple-system, BlinkMacSystemFont, "PingFang SC", "Noto Sans SC", sans-serif;
   --font-mono: "Space Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
 
+  /* 8px base spacing scale */
+  --space-2xs: 2px;
+  --space-xs: 4px;
+  --space-sm: 8px;
+  --space-md: 16px;
+  --space-lg: 24px;
+  --space-xl: 32px;
+  --space-2xl: 48px;
+  --space-3xl: 64px;
+  --space-4xl: 96px;
+
   /* Geometry */
   --radius-panel: 28px;
   --radius-card: 24px;
+  --radius-card-compact: 16px;
   --radius-item: 14px;
+  --radius-tech: 6px;
   --radius-pill: 999px;
   --bento-gap: 20px;
 
@@ -80,8 +80,13 @@
   --glyph-ink: #FFFFFF;
 
   --glyph-accent: #D71921;
+  --glyph-accent-subtle: rgba(215, 25, 33, 0.12);
   --glyph-red: #D71921;
   --glyph-on-accent: #FFFFFF;
+
+  --glyph-success: #3B874B;
+  --glyph-warning: #B88B28;
+  --glyph-interactive: #007AFF;
 
   --glyph-glow: rgba(0, 0, 0, 0.3);
   --glyph-scrim: rgba(233, 233, 233, 0.8);
@@ -149,6 +154,19 @@
   line-height: 1.1;
   color: var(--glyph-fg);
 }
+
+/* Inline mechanical status text: [SAVED], [LOADING...], [ERROR] */
+.glyph-status-inline {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--glyph-grey);
+}
+
+.glyph-status-inline.is-success { color: var(--glyph-success); }
+.glyph-status-inline.is-warning { color: var(--glyph-warning); }
+.glyph-status-inline.is-error   { color: var(--glyph-red); }
 
 /* ==========================================================================
    Interactive Controls
@@ -286,6 +304,15 @@
 .glyph-toggle[aria-checked="true"] .glyph-toggle-label {
   transform: translateX(-42px);
   color: var(--glyph-ink);
+}
+
+/* Clean flat data row (no zebra striping) */
+.glyph-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--glyph-s3);
 }
 
 /* Discrete mechanical blink (colon / live indicator) */

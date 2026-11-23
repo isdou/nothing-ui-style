@@ -5,7 +5,7 @@
 **Black, white dots, one red.**
 
 面向 AI Coding Agent（Antigravity / Claude Code / Cursor / OpenClaw 等）的 **Nothing OS 工业点阵风格 UI 设计 Skill**。  
-将极简 7 级黑白灰阶、LED 点阵矩阵、唯一活体红点（`#D71921`）与无过冲 Glide 动效，封装为可直接复用的跨平台 UI 设计规范与 Design Tokens。
+将极简 7 级黑白灰阶、三层信息层级、LED 点阵矩阵、唯一活体红点（`#D71921`）、无过冲 Glide 动效与跨平台映射（Web / Tailwind / SwiftUI），封装为可直接复用的 UI 设计规范与 Design Tokens。
 
 ![Style](https://img.shields.io/badge/Style-Nothing%20OS%20%2F%20Glyph-000000?style=flat-square)
 ![Accent](https://img.shields.io/badge/One%20Live%20Red-%23D71921-D71921?style=flat-square)
@@ -26,16 +26,17 @@
 
 ## ✨ 这是什么
 
-`glyph-ui-style` 是一个面向现代前端与桌面应用开发的 **UI Design Skill**。当你想用 AI 构建具有硬件精密感、极高对比度与极简工业美学的界面（Dashboard、系统监控面板、音频/硬件控制台、极客效率工具、AI 产品控制台）时，只需加载本 Skill，AI 就会严格遵循这套视觉语言输出代码。
+`glyph-ui-style` 是一个面向现代前端、桌面端与移动端开发的 **UI Design Skill**。当你想用 AI 构建具有硬件精密感、极高对比度与极简工业美学的界面（Dashboard、系统监控面板、音频/硬件控制台、极客效率工具、AI 产品控制台）时，只需加载本 Skill，AI 就会严格遵循这套视觉语言输出代码。
 
 ### 核心设计原则
 - **7 级单色灰阶**：摒弃花哨渐变与廉价毛玻璃，依靠精确的 7 级黑白灰（`#000000 → #0E0E0E → #1A1A1A → #2A2A2A → #4A4A4A → #8C8C8C → #F2F2F2`）与 `1px` 细线建立空间层级，完整支持 Dark / Light 双模式自动反转。
-- **「唯一红点」铁律（One Live Red）**：`#D71921` 在同一视野内**最多只出现 1 处**，专用于标识「当前正在运行的活体焦点」或紧急告警；其余所有选中态与激活态严格采用黑白反色。
+- **三层信息层级 & 容器轻量化**：每屏严格控制 Primary / Secondary / Tertiary 三层权重，优先用留白（`8px` 基准阶梯）与细线分组，避免套壳与视觉扁平。
+- **「唯一红点」铁律（One Live Red）**：`#D71921` 在同一视野内**最多只出现 1 处**，专用于标识「当前正在运行的活体焦点」或紧急告警；其余选中态严格采用黑白反色。数据密集页支持克制的数据状态色（仅给数值本身上色）。
 - **三字体分工体系**：
   - `Doto`（圆点点阵体，字号 `>= 26px`）：时钟、KPI 巨型数字与短词
   - `Space Grotesk`：界面正文与大号欢迎语
-  - `Space Mono`（全大写 + `0.14em` 字距）：元标签、状态栏与硬件标识
-- **Glide 机械阻尼动效**：统一使用 `cubic-bezier(0.25, 1, 0.5, 1)`（`ease-out-quart`，`350ms`），快启慢收、**零过冲回弹**。
+  - `Space Mono`（全大写 + `0.14em` 字距）：元标签、状态栏、按钮文案与硬件标识
+- **Glide 机械阻尼与极客态反馈**：统一使用 `cubic-bezier(0.25, 1, 0.5, 1)`（`350ms`，**零过冲回弹**）；用 `[LOADING...]` / `[SAVED]` 替代骨架屏与花哨 Toast；表格无斑马纹；仅用 `1.5px` 单线极简图标。
 
 ---
 
@@ -73,12 +74,12 @@ ln -sfn ~/glyph-ui-style ~/.gemini/config/skills/glyph-ui-style
 ```
 
 ### Claude Code / Cursor / OpenClaw 等其他 Agent 平台
-将本仓库目录放入对应平台的 `skills/` 目录（确保 `SKILL.md` 位于 `skills/glyph-ui-style/SKILL.md`），或在提示词中直接引用 [`SKILL.md`](./SKILL.md) 与 [`references/tokens.css`](./references/tokens.css)。
+将本仓库目录放入对应平台的 `skills/` 目录（确保 `SKILL.md` 位于 `skills/glyph-ui-style/SKILL.md`），或在提示词中直接引用 [`SKILL.md`](./SKILL.md)、[`references/tokens.css`](./references/tokens.css) 与 [`references/platform-mapping.md`](./references/platform-mapping.md)。
 
 ### 触发方式
 安装后新开对话，直接向 AI 描述需求即可自动触发，例如：
 - 「用 **Glyph 风格**帮我做一个 AI 模型监控 Dashboard」
-- 「按 **Nothing OS 点阵风**写一个番茄钟组件，支持深浅色切换」
+- 「按 **Nothing OS 点阵风**写一个 SwiftUI 番茄钟组件，支持深浅色切换」
 - 「套用 **glyph-ui-style** 重构这个设置面板」
 
 ---
@@ -87,28 +88,34 @@ ln -sfn ~/glyph-ui-style ~/.gemini/config/skills/glyph-ui-style
 
 ```text
 glyph-ui-style/
-├── SKILL.md                  # Agent Skill 核心规范（设计哲学、Token、组件原语、反模式红线）
-├── demo.html                 # 零依赖交互式组件 Demo（双击浏览器打开）
+├── SKILL.md                      # Agent Skill 核心规范（设计哲学、Token、三层层级、组件原语、反模式红线）
+├── index.html                    # GitHub Pages 根路径自动跳转页
+├── demo.html                     # 零依赖交互式组件 Demo（双击浏览器打开）
 ├── references/
-│   └── tokens.css            # 可直接复用的 Dark/Light CSS Design Tokens 与基础组件样式
+│   ├── tokens.css                # 可直接复用的 Dark/Light CSS Design Tokens 与基础组件样式
+│   └── platform-mapping.md       # HTML/CSS、Tailwind CSS v4、SwiftUI (iOS/macOS) 映射模板
 └── assets/
-    ├── fonts/                # 内嵌 OFL 开源字体（Doto / Space Grotesk / Space Mono）
-    └── screenshots/          # 原版 Glyph 桌面视觉参考图
+    ├── fonts/                    # 内嵌 OFL 开源字体（Doto / Space Grotesk / Space Mono）
+    └── screenshots/              # 原版 Glyph 桌面视觉参考图
 ```
 
 ---
 
 ## 🙏 致敬与鸣谢 (Credits & Attribution)
 
-本 Skill 的视觉设计体系、色彩阶梯、点阵组件原语、动效曲线及参考素材，均提炼与致敬自优秀的开源 Linux 桌面美化项目：
+本 Skill 的设计体系、组件原语、构图法则与参考素材融合并致敬自以下优秀开源项目：
 
-- **原项目 & 原作者**：[**Nebelung-cloud/glyph-rice**](https://github.com/Nebelung-cloud/glyph-rice) by [@Nebelung-cloud](https://github.com/Nebelung-cloud) — *A Nothing OS rice for Hyprland + Quickshell*。原项目在 Arch Linux / Hyprland / Quickshell 上打造了极具完成度的点阵美学桌面，本仓库旨在将这份惊艳的视觉语言抽象为跨平台的 AI UI Skill，让 macOS / Windows / Web 开发者也能在前端与桌面界面中延续它的美学。
-- **上游灵感与字体致谢**：
-  - [**Nothing OS**](https://nothing.tech) — 原始工业美学与 Glyph 灯光交互灵感（Nothing / Nothing OS / Glyph 为 Nothing Technology Ltd. 商标，本项目为非官方粉丝衍生项目）
-  - [**Doto**](https://github.com/oliverlalan/Doto) by Oliver Lalan — 点阵可变字体（OFL-1.1）
-  - **Space Grotesk & Space Mono** — 正文与等宽标签字体（OFL-1.1）
+1. [**Nebelung-cloud/glyph-rice**](https://github.com/Nebelung-cloud/glyph-rice) by [@Nebelung-cloud](https://github.com/Nebelung-cloud)（GPL-3.0）
+   - 提供了本 Skill 的核心视觉基底：7 级黑白灰阶、LED 环形进度/分段灯带/展开胶囊开关等实装硬件原语、Glide 无过冲动效、开源字体资产及桌面视觉参考图。
+2. [**dominikmartn/nothing-design-skill**](https://github.com/dominikmartn/nothing-design-skill) by [@dominikmartn](https://github.com/dominikmartn)（MIT License, Copyright (c) 2026 Dominik Martin）
+   - 吸收了其极具洞察力的构图与工程法则：三层信息层级铁律（The Three-Layer Rule）、8px 间距语义与容器轻量化梯队、数据状态色规范、极客态反馈模式（`[LOADING]` / `[SAVED]` / 无斑马纹 / `1.5px` 单线图标）以及多平台（Tailwind / SwiftUI）映射思路。
+3. **上游灵感与字体致谢**：
+   - [**Nothing OS**](https://nothing.tech) — 原始工业美学与 Glyph 灯光交互灵感（Nothing / Nothing OS / Glyph 为 Nothing Technology Ltd. 商标，本项目为非官方粉丝衍生项目）
+   - [**Doto**](https://github.com/oliverlalan/Doto) by Oliver Lalan — 点阵可变字体（OFL-1.1）
+   - **Space Grotesk & Space Mono** — 正文与等宽标签字体（OFL-1.1）
 
 ## 📄 License
 
 - 衍生自 [`Nebelung-cloud/glyph-rice`](https://github.com/Nebelung-cloud/glyph-rice) 的设计参考图与规范延续 **GPL-3.0** 协议。
+- 吸收自 [`dominikmartn/nothing-design-skill`](https://github.com/dominikmartn/nothing-design-skill) 的方法论与多平台映射规范遵循原 **MIT License**。
 - `assets/fonts/` 下的字体文件遵循各自开源协议 [**OFL-1.1**](./assets/fonts/OFL.txt)。
